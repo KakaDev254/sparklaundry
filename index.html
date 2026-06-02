@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Stains2Spark | Eco-Friendly Laundry</title>
+    <!-- Tailwind CSS v3 + Font Awesome Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#39B1D1',
+                        'brand-gold': '#FFD400',
+                        'brand-dark': '#232F72',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'Segoe UI', 'Helvetica Neue', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02)',
+                        'glow': '0 20px 35px -12px rgba(57, 177, 209, 0.25)',
+                        'card': '0 20px 30px -12px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .service-card {
+            transition: all 0.25s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -12px rgba(35, 47, 114, 0.12);
+        }
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .footer-link {
+            transition: color 0.2s ease;
+        }
+        .footer-link:hover {
+            color: #39B1D1;
+        }
+        @keyframes subtlePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        .popular-badge {
+            animation: subtlePulse 2s infinite;
+        }
+        .quote-icon {
+            opacity: 0.15;
+            transition: opacity 0.3s ease;
+        }
+        .testimonial-card:hover .quote-icon {
+            opacity: 0.25;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans antialiased">
+
+    <!-- ==================== NAVBAR WITH LOGO ==================== -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-soft">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+            <div class="flex justify-between items-center py-4 md:py-5">
+                <!-- Logo with image -->
+                <div class="flex items-center gap-2">
+                    <img src="assets/logo.png" alt="Stains2Spark Logo" class="h-10 w-auto md:h-12" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-2xl md:text-3xl font-extrabold tracking-tight text-brand-dark\'>Stains<span class=\'text-brand-gold\'>2</span>Spark</span>'">
+                </div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-7 lg:space-x-9">
+                    <a href="#" class="text-gray-700 hover:text-brand-blue font-medium transition">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-brand-blue font-medium transition">How it works</a>
+                    <a href="#" class="text-gray-700 hover:text-brand-blue font-medium transition">Pricing</a>
+                    <a href="#" class="text-gray-700 hover:text-brand-blue font-medium transition">Contact</a>
+                    <a href="#" class="bg-brand-blue hover:bg-brand-blue/85 text-white font-semibold px-5 py-2.5 rounded-full shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5">
+                        <i class="fas fa-calendar-alt mr-2 text-sm"></i>Schedule Pickup
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-brand-dark text-3xl focus:outline-none" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <!-- Mobile Navigation Menu -->
+            <div id="mobileNavMenu" class="md:hidden hidden flex-col pb-5 space-y-3 border-t border-gray-100 pt-4">
+                <a href="#" class="text-gray-700 hover:text-brand-blue font-medium py-2 transition flex items-center gap-2"><i class="fas fa-tshirt w-5 text-brand-blue/70"></i>Services</a>
+                <a href="#" class="text-gray-700 hover:text-brand-blue font-medium py-2 transition flex items-center gap-2"><i class="fas fa-chalkboard-user w-5 text-brand-blue/70"></i>How it works</a>
+                <a href="#" class="text-gray-700 hover:text-brand-blue font-medium py-2 transition flex items-center gap-2"><i class="fas fa-tag w-5 text-brand-blue/70"></i>Pricing</a>
+                <a href="#" class="text-gray-700 hover:text-brand-blue font-medium py-2 transition flex items-center gap-2"><i class="fas fa-envelope w-5 text-brand-blue/70"></i>Contact</a>
+                <a href="#" class="bg-brand-blue text-white font-semibold px-5 py-3 rounded-full text-center shadow-md mt-2 inline-flex items-center justify-center gap-2">
+                    <i class="fas fa-calendar-check"></i> Schedule Pickup
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION (reduced padding) ==================== -->
+    <section class="bg-white">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-10 md:py-16 lg:py-20">
+            <div class="flex flex-col lg:flex-row gap-10 lg:gap-14 items-center">
+                <!-- Left Side: Text Content -->
+                <div class="flex-1">
+                    <div class="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue font-semibold text-sm px-4 py-1.5 rounded-full mb-5">
+                        <i class="fas fa-leaf text-brand-blue text-xs"></i> 
+                        <span>ECO-FRIENDLY CLEAN</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-brand-dark leading-tight">
+                        Freshness Starts<br>
+                        <span class="text-brand-blue">Here.</span>
+                    </h1>
+                    <p class="text-gray-600 text-base sm:text-lg max-w-xl mt-5 leading-relaxed">
+                        From everyday loads to stubborn stains, <strong class="text-brand-dark">Stains To Spark</strong> Laundry delivers crisp, spotless clothes to your door — neatly folded and ready to wear.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <a href="#" class="bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold px-7 py-3.5 rounded-full shadow-md transition-all hover:-translate-y-1 flex items-center gap-2 text-base">
+                            <i class="fas fa-box-open"></i> Book a Pickup
+                        </a>
+                        <a href="#" class="border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white font-semibold px-7 py-3.5 rounded-full transition-all duration-200 flex items-center gap-2 text-base bg-transparent">
+                            <i class="fas fa-chart-line"></i> View Pricing
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap gap-8 sm:gap-12 mt-10 pt-4 border-t border-gray-200/70">
+                        <div class="flex items-center gap-2">
+                            <span class="text-3xl sm:text-4xl font-black text-brand-dark">24h</span>
+                            <span class="text-gray-600 font-medium">Turnaround</span>
+                        </div>
+                        <div class="hidden sm:block w-px h-8 bg-gray-300"></div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-3xl sm:text-4xl font-black text-brand-dark">5</span>
+                            <div class="flex flex-col items-start">
+                                <div class="flex text-brand-gold text-sm sm:text-base">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <span class="text-gray-600 font-medium text-sm">Avg rating</span>
+                            </div>
+                        </div>
+                        <div class="hidden sm:block w-px h-8 bg-gray-300"></div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-truck-fast text-brand-blue text-xl"></i>
+                            <div>
+                                <span class="text-gray-800 font-bold block text-left">Free</span>
+                                <span class="text-gray-600 text-sm font-medium">Pickup & delivery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Side: Landscape Image -->
+                <div class="flex-1 w-full max-w-md lg:max-w-none mx-auto lg:mx-0">
+                    <div class="rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-white">
+                        <img 
+                            src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&h=500&fit=crop" 
+                            alt="Fresh clean laundry on table" 
+                            class="w-full h-auto object-cover"
+                            style="aspect-ratio: 16/10; object-fit: cover;"
+                        >
+                    </div>
+                    <div class="text-center mt-3">
+                        <span class="inline-flex items-center gap-1 text-xs text-gray-500 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-gray-100">
+                            <i class="fas fa-check-circle text-green-500"></i> 100% Satisfaction Guaranteed
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES SECTION (reduced padding) ==================== -->
+    <section class="py-12 md:py-16 bg-white relative">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+                <div class="inline-flex items-center gap-2 bg-brand-gold/10 text-brand-dark rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+                    <i class="fas fa-heart text-brand-blue"></i>
+                    <span>What we offer</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight">
+                    Services that <span class="text-brand-blue">spark joy</span>
+                </h2>
+                <p class="text-gray-500 text-base mt-3 max-w-xl mx-auto">
+                    Everything your wardrobe needs, handled with care by experienced laundry pros.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-card transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-4 group-hover:bg-brand-blue transition-colors duration-200">
+                        <i class="fas fa-tshirt text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-dark mb-1">Wash, Dry & Fold</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Everyday laundry, sorted and folded just the way you like it.</p>
+                </div>
+                <div class="service-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-card transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-4 group-hover:bg-brand-blue transition-colors duration-200">
+                        <i class="fas fa-user-tie text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-dark mb-1">Dry Cleaning</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Gentle care for suits, dresses, and delicates.</p>
+                </div>
+                <div class="service-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-card transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-4 group-hover:bg-brand-blue transition-colors duration-200">
+                        <i class="fas fa-leaf text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-dark mb-1">Eco Detergents</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Hypoallergenic, plant-based soaps that are tough on stains.</p>
+                </div>
+                <div class="service-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-card transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-4 group-hover:bg-brand-blue transition-colors duration-200">
+                        <i class="fas fa-truck text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-dark mb-1">Pickup & Delivery</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Free same-day pickup within our service area.</p>
+                </div>
+                <div class="service-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-card transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-4 group-hover:bg-brand-blue transition-colors duration-200">
+                        <i class="fas fa-clock text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-dark mb-1">24h Turnaround</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Order today, wear it tomorrow. Express options available.</p>
+                </div>
+                <div class="service-card bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-card transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-4 group-hover:bg-brand-blue transition-colors duration-200">
+                        <i class="fas fa-shield-alt text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-brand-dark mb-1">Stain Guarantee</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">If a stain remains, we re-treat it on the house.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS SECTION (reduced padding) ==================== -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+                <div class="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <span>Simple Process</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight">
+                    How it <span class="text-brand-blue">works</span>
+                </h2>
+                <p class="text-gray-500 text-base mt-3 max-w-xl mx-auto">
+                    Four simple steps from pile of clothes to spotless and folded.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="step-card relative bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                    <div class="absolute -top-3 left-5 w-10 h-10 rounded-xl bg-brand-gold text-brand-dark flex items-center justify-center text-base font-black shadow-md">01</div>
+                    <div class="pt-6">
+                        <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center mb-3 group-hover:bg-brand-blue transition-colors duration-200">
+                            <i class="fas fa-calendar-check text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-dark mb-1">Schedule</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Book your pickup online or by phone in under a minute.</p>
+                    </div>
+                </div>
+                <div class="step-card relative bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                    <div class="absolute -top-3 left-5 w-10 h-10 rounded-xl bg-brand-gold text-brand-dark flex items-center justify-center text-base font-black shadow-md">02</div>
+                    <div class="pt-6">
+                        <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center mb-3 group-hover:bg-brand-blue transition-colors duration-200">
+                            <i class="fas fa-truck-fast text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-dark mb-1">We collect</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Our driver picks up your bag from your doorstep — free.</p>
+                    </div>
+                </div>
+                <div class="step-card relative bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                    <div class="absolute -top-3 left-5 w-10 h-10 rounded-xl bg-brand-gold text-brand-dark flex items-center justify-center text-base font-black shadow-md">03</div>
+                    <div class="pt-6">
+                        <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center mb-3 group-hover:bg-brand-blue transition-colors duration-200">
+                            <i class="fas fa-soap text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-dark mb-1">We clean</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Sorted, washed, and treated with eco-friendly detergents.</p>
+                    </div>
+                </div>
+                <div class="step-card relative bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                    <div class="absolute -top-3 left-5 w-10 h-10 rounded-xl bg-brand-gold text-brand-dark flex items-center justify-center text-base font-black shadow-md">04</div>
+                    <div class="pt-6">
+                        <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center mb-3 group-hover:bg-brand-blue transition-colors duration-200">
+                            <i class="fas fa-door-open text-xl text-brand-blue group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-brand-dark mb-1">We deliver</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Folded, packed, and back to you within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#" class="inline-flex items-center gap-2 bg-brand-blue hover:bg-brand-blue/90 text-white font-semibold px-6 py-3 rounded-full shadow-md transition-all hover:shadow-lg">
+                    Schedule your first pickup <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PRICING SECTION (reduced padding) ==================== -->
+    <section class="py-12 md:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+                <div class="inline-flex items-center gap-2 bg-brand-gold/10 text-brand-dark rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+                    <i class="fas fa-tag"></i>
+                    <span>Transparent pricing</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight">
+                    Simple <span class="text-brand-blue">pricing</span>
+                </h2>
+                <p class="text-gray-500 text-base mt-3 max-w-xl mx-auto">
+                    No surprise fees. Pickup and delivery are always on the house.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="pricing-card bg-white rounded-2xl border border-gray-200 p-5 shadow-md hover:shadow-xl transition-all duration-300">
+                    <div class="mb-4">
+                        <h3 class="text-xl font-bold text-brand-dark mb-1">Wash & Fold</h3>
+                        <div class="flex items-baseline gap-1 mt-2">
+                            <span class="text-3xl font-black text-brand-blue">$1.75</span>
+                            <span class="text-gray-500 font-medium text-sm">/lb</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-weight-hanging text-brand-blue w-4"></i><span>8 lb minimum</span></li>
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-clock text-brand-blue w-4"></i><span>48h turnaround</span></li>
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-truck text-brand-blue w-4"></i><span>Free pickup & delivery</span></li>
+                    </ul>
+                    <a href="#" class="block text-center border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white font-semibold py-2.5 rounded-xl transition-all duration-200 text-sm">Get started <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="pricing-card bg-white rounded-2xl border-2 border-brand-gold shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0"><div class="bg-brand-gold text-brand-dark text-xs font-bold px-3 py-1 rounded-bl-2xl flex items-center gap-1 popular-badge"><i class="fas fa-star text-xs"></i><span>Most popular</span></div></div>
+                    <div class="p-5">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-bold text-brand-dark mb-1">Spark Express</h3>
+                            <div class="flex items-baseline gap-1 mt-2"><span class="text-3xl font-black text-brand-blue">$2.50</span><span class="text-gray-500 font-medium text-sm">/lb</span></div>
+                        </div>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-bolt text-brand-gold w-4"></i><span>Same-day service</span></li>
+                            <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-chart-line text-brand-gold w-4"></i><span>Priority queue</span></li>
+                            <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-leaf text-brand-gold w-4"></i><span>Eco detergent included</span></li>
+                            <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-shield-alt text-brand-gold w-4"></i><span>Stain guarantee</span></li>
+                        </ul>
+                        <a href="#" class="block text-center bg-brand-gold hover:bg-amber-400 text-brand-dark font-bold py-2.5 rounded-xl transition-all duration-200 shadow-md text-sm">Get started <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                <div class="pricing-card bg-white rounded-2xl border border-gray-200 p-5 shadow-md hover:shadow-xl transition-all duration-300">
+                    <div class="mb-4">
+                        <h3 class="text-xl font-bold text-brand-dark mb-1">Dry Cleaning</h3>
+                        <div class="flex items-baseline gap-1 mt-2"><span class="text-3xl font-black text-brand-blue">$6</span><span class="text-gray-500 font-medium text-sm">/item</span></div>
+                        <p class="text-xs text-gray-400 mt-1">From $6 per garment</p>
+                    </div>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-user-tie text-brand-blue w-4"></i><span>Suits, dresses, coats</span></li>
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-iron text-brand-blue w-4"></i><span>Hand-finished pressing</span></li>
+                        <li class="flex items-center gap-2 text-gray-600 text-sm"><i class="fas fa-heart text-brand-blue w-4"></i><span>Garment-by-garment care</span></li>
+                    </ul>
+                    <a href="#" class="block text-center border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white font-semibold py-2.5 rounded-xl transition-all duration-200 text-sm">Get started <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <div class="inline-flex items-center gap-2 bg-gray-50 rounded-full px-5 py-2 shadow-sm border border-gray-100">
+                    <i class="fas fa-check-circle text-green-500 text-sm"></i>
+                    <span class="text-gray-600 text-sm">No hidden fees • Free pickup & delivery always included</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TESTIMONIALS SECTION (reduced padding) ==================== -->
+    <section class="py-12 md:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+            <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+                <div class="inline-flex items-center gap-2 bg-brand-gold/10 text-brand-dark rounded-full px-4 py-1.5 text-sm font-semibold mb-4">
+                    <i class="fas fa-heart text-brand-blue"></i>
+                    <span>Real stories</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark tracking-tight">
+                    Loved by our <span class="text-brand-blue">neighbors</span>
+                </h2>
+                <p class="text-gray-500 text-base mt-3 max-w-xl mx-auto">Join thousands of happy customers who trust us with their laundry</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <div class="testimonial-card bg-white rounded-2xl border border-gray-100 p-5 shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute -top-2 -right-2 text-7xl quote-icon text-brand-blue"><i class="fas fa-quote-right"></i></div>
+                    <div class="flex text-brand-gold mb-3 text-base"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-700 leading-relaxed mb-4 relative z-10 text-sm">"My shirts have never looked this crisp. The pickup is a game-changer."</p>
+                    <div class="flex items-center gap-3 mt-3 pt-3 border-t border-gray-100">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold text-sm">AR</div>
+                        <div><p class="font-semibold text-brand-dark text-sm">Aisha R.</p><p class="text-xs text-gray-400">Verified customer</p></div>
+                    </div>
+                </div>
+                <div class="testimonial-card bg-white rounded-2xl border border-gray-100 p-5 shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute -top-2 -right-2 text-7xl quote-icon text-brand-blue"><i class="fas fa-quote-right"></i></div>
+                    <div class="flex text-brand-gold mb-3 text-base"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-700 leading-relaxed mb-4 relative z-10 text-sm">"They got out a wine stain I'd given up on. Truly spark to stains!"</p>
+                    <div class="flex items-center gap-3 mt-3 pt-3 border-t border-gray-100">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold text-sm">MT</div>
+                        <div><p class="font-semibold text-brand-dark text-sm">Marcus T.</p><p class="text-xs text-gray-400">Verified customer</p></div>
+                    </div>
+                </div>
+                <div class="testimonial-card bg-white rounded-2xl border border-gray-100 p-5 shadow-md hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute -top-2 -right-2 text-7xl quote-icon text-brand-blue"><i class="fas fa-quote-right"></i></div>
+                    <div class="flex text-brand-gold mb-3 text-base"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-gray-700 leading-relaxed mb-4 relative z-10 text-sm">"Friendly drivers, neat folding, on-time every week. Highly recommend."</p>
+                    <div class="flex items-center gap-3 mt-3 pt-3 border-t border-gray-100">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue/10 flex items-center justify-center text-brand-blue font-bold text-sm">PS</div>
+                        <div><p class="font-semibold text-brand-dark text-sm">Priya S.</p><p class="text-xs text-gray-400">Verified customer</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section style="background-color: #232F72;">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-12 md:py-16">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 style="color: white; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; line-height: 1.2;">
+                    Ready for that <span style="color: #FFD400;">just-washed</span> feeling?
+                </h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 1.5rem;">
+                    Schedule your first free pickup today. Freshness is just one tap away.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
+                    <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: #FFD400; color: #232F72; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 9999px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-size: 0.95rem;">
+                        <i class="fas fa-calendar-check"></i> Schedule Free Pickup
+                    </a>
+                    <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: transparent; color: white; font-weight: 600; padding: 0.75rem 1.75rem; border-radius: 9999px; text-decoration: none; border: 2px solid white; transition: all 0.2s; font-size: 0.95rem;">
+                        <i class="fas fa-phone-alt"></i> Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer style="background-color: white; border-top: 1px solid #e5e7eb;">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-10 md:py-12">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div>
+                    <h3 style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.75rem; color: #232F72;">Call (555) 123-4567</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="tel:+15551234567" style="color: #6b7280; text-decoration: none; font-size: 0.8rem;" class="footer-link">(555) 123-4567</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="mailto:hello@stains2spark.com" style="color: #6b7280; text-decoration: none; font-size: 0.8rem;" class="footer-link">Email us</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: #6b7280; text-decoration: none; font-size: 0.8rem;" class="footer-link">Visit our shop</a></li>
+                    </ul>
+                    <p style="color: #9ca3af; font-size: 0.75rem; margin-top: 0.5rem;">221 Sunshine Ave, Brightside City</p>
+                </div>
+                <div>
+                    <h3 style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.75rem; color: #232F72;">Hours</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 0.4rem; color: #6b7280; font-size: 0.8rem;">Mon-Sat 7am-8pm</li>
+                        <li style="margin-bottom: 0.4rem; color: #6b7280; font-size: 0.8rem;">Sun 9am-5pm</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.75rem; color: #232F72;">Service area</h3>
+                    <p style="color: #6b7280; font-size: 0.8rem;">Free pickup within 10 miles</p>
+                </div>
+                <div>
+                    <div style="font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; color: #232F72; margin-bottom: 0.5rem;">
+                        Stains<span style="color: #FFD400;">2</span>Spark
+                    </div>
+                    <p style="color: #9ca3af; font-size: 0.7rem; margin-top: 0.75rem;">© 2026 Stains To Spark Laundry.<br>Freshness Starts Here.</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #e5e7eb; padding-top: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div style="font-size: 0.7rem; color: #9ca3af;">© 2026 Stains To Spark Laundry. Freshness Starts Here.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        (function() {
+            const menuBtn = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileNavMenu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    if (isHidden) {
+                        mobileMenu.classList.remove('hidden');
+                        menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    } else {
+                        mobileMenu.classList.add('hidden');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+                const allMobileLinks = mobileMenu.querySelectorAll('a');
+                allMobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 768) {
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
